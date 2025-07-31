@@ -139,7 +139,11 @@ export default function MainPage() {
                         </div>
                     </div>
                 </div>
-                <Divider sx={{ backgroundColor: "#30363d" }} />
+                <Divider
+                    sx={{
+                        backgroundColor: darkTheme ? "#30363d" : "#ebebebff",
+                    }}
+                />
                 <Container
                     maxWidth="lg"
                     className="main-page"

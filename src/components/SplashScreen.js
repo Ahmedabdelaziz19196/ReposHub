@@ -50,7 +50,16 @@ export default function Splashscreen() {
                     <p className="b title ">b</p>
                 </div>
             </div>
-            <h1 className="mobile-title">ReposHub</h1>
+            <h1
+                className="mobile-title"
+                style={{
+                    color: darkTheme
+                        ? "var(--main-dark-background)"
+                        : "var(--main-light-background)",
+                }}
+            >
+                ReposHub
+            </h1>
         </div>
     );
 }
