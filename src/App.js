@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { useEffect, useState } from "react";
+import "./App.css";
+import Splashscreen from "./components/SplashScreen";
+import MainPage from "./components/MainPage";
+import DarkAndLightTheme from "./Context/DarkAndLight";
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [darkTheme, setDarkMode] = useState(true);
+    const [spashScreen, isSplashScreen] = useState(true);
+
+    function handleDarkLightTheme() {
+        let theTheme = !darkTheme;
+        setDarkMode(theTheme);
+        localStorage.setItem("theTheme", JSON.stringify(theTheme));
+    }
+
+    useEffect(() => {
+        const theTheme = JSON.parse(localStorage.getItem("theTheme"));
+        setDarkMode(theTheme);
+    }, []);
+
+    useEffect(() => {
+        const splashShown = sessionStorage.getItem("splashScreen");
+        if (splashShown) {
+            isSplashScreen(false);
+        } else {
+            setTimeout(() => {
+                isSplashScreen(false);
+                // sessionStorage.setItem("splashScreen", "true");
+            }, 5700);
+        }
+    }, [spashScreen]);
+
+    return (
+        <>
+            <DarkAndLightTheme.Provider
+                value={{ darkTheme, handleDarkLightTheme }}
+            >
+                {spashScreen ? <Splashscreen /> : <MainPage />}
+            </DarkAndLightTheme.Provider>
+        </>
+    );
 }
 
 export default App;

@@ -1,38 +1,92 @@
-.App {
-  text-align: center;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+    font-family: "Cairo";
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+:root {
+    --main-dark-background: #0d1117;
+    --secondry-dark-background: #010409;
+    --main-light-background: white;
+    --secondry-light-background: #f6f8fa;
+    --color-dark: white;
+    --color-light: black;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* App.css */
+
+/* body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        Helvetica, Arial, sans-serif;
 }
 
-.App-link {
-  color: #61dafb;
+code,
+pre {
+    font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+} */
+
+@font-face {
+    font-family: "Cairo";
+    src: url("../public/Fonts/Cairo/Cairo-Black.ttf") format("truetype");
+    font-weight: 200;
+    font-style: normal;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+@font-face {
+    font-family: "Cairo";
+    src: url("../public/Fonts/Cairo/Cairo-Light.ttf") format("truetype");
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Cairo";
+    src: url("../public/Fonts/Cairo/Cairo-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Cairo";
+    src: url("../public/Fonts/Cairo/Cairo-Medium.ttf") format("truetype");
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Cairo";
+    src: url("../public/Fonts/Cairo/Cairo-SemiBold.ttf") format("truetype");
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Cairo";
+    src: url("../public/Fonts/Cairo/Cairo-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Cairo";
+    src: url("../public/Fonts/Cairo/Cairo-ExtraBold.ttf") format("truetype");
+    font-weight: 800;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Cairo";
+    src: url("../public/Fonts/Cairo/Cairo-Black.ttf") format("truetype");
+    font-weight: 900;
+    font-style: normal;
+}
+
+@media (max-width: 768px) {
+    .searchBar {
+        margin-top: 85px;
+    }
 }
