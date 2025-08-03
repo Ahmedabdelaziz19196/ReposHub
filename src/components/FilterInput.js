@@ -4,13 +4,13 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import DarkAndLightTheme from "../Context/DarkAndLight";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import Date from "./Date";
 
 export default function FilterInput() {
     const { darkTheme } = useContext(DarkAndLightTheme);
-    const [language, setLanguage] = useState("javascript");
-    const [stars, seStars] = useState("");
+    // const [language, setLanguage] = useState("javascript");
+    // const [stars, seStars] = useState("");
 
     const languageList = [
         "JavaScript",
@@ -35,9 +35,9 @@ export default function FilterInput() {
         "Haskell",
     ];
 
-    const handleChange = (event) => {
-        setLanguage(event.target.value);
-    };
+    // const handleChange = (event) => {
+    //     setLanguage(event.target.value);
+    // };
 
     return (
         <Box sx={{ minWidth: 120 }}>
@@ -64,7 +64,7 @@ export default function FilterInput() {
                 <Select
                     labelId="language-label"
                     id="language"
-                    value={language}
+                    // value={language}
                     label="Language"
                     // onChange={handleChange}
                     MenuProps={{
@@ -142,7 +142,7 @@ export default function FilterInput() {
                 <Select
                     labelId="stars-label"
                     id="stars"
-                    value={stars}
+                    // value={stars}
                     label="stars"
                     // onChange={handleChange}
                     MenuProps={{
@@ -223,7 +223,7 @@ export default function FilterInput() {
                 <Select
                     labelId="create-label"
                     id="stars"
-                    value={stars}
+                    // value={stars}
                     label="stars"
                     // onChange={handleChange}
                     MenuProps={{
