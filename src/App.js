@@ -25,7 +25,7 @@ function App() {
         } else {
             setTimeout(() => {
                 isSplashScreen(false);
-                // sessionStorage.setItem("splashScreen", "true");
+                sessionStorage.setItem("splashScreen", "true");
             }, 5700);
         }
     }, [spashScreen]);

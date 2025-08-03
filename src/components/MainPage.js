@@ -7,9 +7,14 @@ import { faSun } from "@fortawesome/free-solid-svg-icons";
 import { faMoon } from "@fortawesome/free-solid-svg-icons";
 import { useContext, useState } from "react";
 import DarkAndLightTheme from "../Context/DarkAndLight";
+import NavBar from "./NavBar";
+import Card from "./Cards";
+import ThePagination from "./Pagination";
+
 export default function MainPage() {
     const { darkTheme, handleDarkLightTheme } = useContext(DarkAndLightTheme);
     const [mobileSreach, inMobileSearch] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
     function handleSreachBarDisplay() {
         if (window.innerWidth < 769) {
             inMobileSearch(true);
@@ -24,11 +29,16 @@ export default function MainPage() {
     function handleThemeIcon() {
         handleDarkLightTheme();
     }
+    function handleScroll() {
+        setIsScrolled(window.scrollY >= 20 ? true : false);
+    }
+    window.addEventListener("scroll", handleScroll);
+
     return (
         <>
             <div
                 style={{
-                    height: "100vh",
+                    minHeight: "100vh",
                     background: darkTheme
                         ? "var(--main-dark-background)"
                         : "var(--main-light-background)",
@@ -45,11 +55,13 @@ export default function MainPage() {
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "space-between",
-                        background: darkTheme
-                            ? "var(--secondry-dark-background)"
-                            : "var(--secondry-light-background)",
+                        position: "sticky",
+                        top: "0px",
+                        zIndex: "9999",
+                        backdropFilter: "blur(10px)",
                     }}
-                    className="nav-bar"
+                    className={`top-bar ${isScrolled ? "scrolled" : ""}`}
+                    data-theme={darkTheme ? "dark" : "light"}
                 >
                     <div
                         style={{
@@ -142,23 +154,20 @@ export default function MainPage() {
                 <Divider
                     sx={{
                         backgroundColor: darkTheme ? "#30363d" : "#ebebebff",
+                        position: "sticky",
+                        top: "57px",
                     }}
                 />
                 <Container
-                    maxWidth="lg"
+                    maxWidth="md"
                     className="main-page"
                     sx={{ height: "calc(100% - 58px)" }}
                     onClick={setSearchBarOffMobile}
                 >
-                    <div
-                        style={{
-                            // background: "red",
-                            height: "100%",
-                            width: "100%",
-                        }}
-                    ></div>
+                    <NavBar />
+                    <Card />
+                    <ThePagination />
                 </Container>
-                <div></div>
             </div>
         </>
     );
