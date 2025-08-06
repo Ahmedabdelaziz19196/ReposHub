@@ -4,12 +4,15 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import DarkAndLightTheme from "../Context/DarkAndLight";
-import { useContext } from "react";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+import TextField from "@mui/material/TextField";
+import { useContext, useState } from "react";
 import Date from "./Date";
 
 export default function FilterInput() {
     const { darkTheme } = useContext(DarkAndLightTheme);
-    // const [language, setLanguage] = useState("javascript");
+    const [language, setLanguage] = useState("javascript");
     // const [stars, seStars] = useState("");
 
     const languageList = [
@@ -193,12 +196,10 @@ export default function FilterInput() {
                     <MenuItem value={"500..1000"}>500 - 1000</MenuItem>
                     <MenuItem value={">1000"}>More than 1000</MenuItem>
                 </Select>
-
-                {/* stars selection */}
             </FormControl>
             {/* stars selection */}
 
-            {/* stars create date */}
+            {/*  creation date */}
             <FormControl
                 fullWidth
                 sx={{ marginBottom: "20px", position: "relative" }}
@@ -285,7 +286,173 @@ export default function FilterInput() {
                     <Date />
                 </div>
             </FormControl>
-            {/* stars create date */}
+            {/*  creation date */}
+
+            {/*  Last Update */}
+            <FormControl
+                fullWidth
+                sx={{ marginBottom: "20px", position: "relative" }}
+            >
+                <InputLabel
+                    id="update-label"
+                    sx={{
+                        color: darkTheme
+                            ? "var(--color-dark)"
+                            : "var(--color-light)",
+                        background: darkTheme
+                            ? "var(--secondry-dark-background)"
+                            : "var(--secondry-light-background)",
+                        padding: "0px 5px",
+                        "& .MuiList-root-MuiMenu-list": {
+                            color: "red",
+                        },
+                    }}
+                >
+                    Last Update
+                </InputLabel>
+                <Select
+                    labelId="update-label"
+                    id="stars"
+                    // value={stars}
+                    label="stars"
+                    // onChange={handleChange}
+                    MenuProps={{
+                        PaperProps: {
+                            sx: {
+                                "& .MuiList-root": {
+                                    backgroundColor: darkTheme
+                                        ? "var(--main-dark-background)"
+                                        : "var(--main-light-background)",
+                                    color: darkTheme
+                                        ? "var(--color-dark)"
+                                        : "var(--color-light)",
+                                },
+                                "& .MuiList-root .MuiMenuItem-root": {
+                                    "&:hover": {
+                                        background: darkTheme
+                                            ? "var(--secondry-dark-background)"
+                                            : "var(--secondry-light-background)",
+                                    },
+                                },
+                            },
+                        },
+                    }}
+                    sx={{
+                        "& .MuiSvgIcon-root": {
+                            color: darkTheme
+                                ? "var(--color-dark)"
+                                : "var(--color-light)",
+                        },
+                        "& .MuiOutlinedInput-notchedOutline": {
+                            border: darkTheme
+                                ? "1px solid var(--color-dark)"
+                                : "1px solid var(--color-light)",
+                        },
+                        "&:hover .MuiOutlinedInput-notchedOutline": {
+                            borderColor: darkTheme
+                                ? "var(--color-dark)"
+                                : "var(--color-light)",
+                        },
+                        "& .MuiSelect-select": {
+                            color: darkTheme
+                                ? "var(--color-dark)"
+                                : "var(--color-light)",
+                        },
+                    }}
+                >
+                    <MenuItem value={"1week"}>Updated in last week</MenuItem>
+                    <MenuItem value={"1month"}>Updated in last month</MenuItem>
+                    <MenuItem value={"6month"}>
+                        Updated in last 6 months
+                    </MenuItem>
+                    <MenuItem value={"1year"}>Updated in last year </MenuItem>
+                </Select>
+                <div
+                    style={{
+                        position: "absolute",
+                        right: "30px",
+                        top: "50%",
+                        transform: "translateY(-50%)",
+                    }}
+                >
+                    <Date />
+                </div>
+            </FormControl>
+            {/*  Last Update */}
+
+            {/* Check Open Issues */}
+            {/* <FormControl
+                fullWidth
+                sx={{ marginBottom: "20px", position: "relative" }}
+            >
+                <FormControlLabel
+                    control={
+                        <Checkbox
+                            // checked={checked}
+                            // onChange={handleChange}
+                            name="issues"
+                        />
+                    }
+                    label="Open Issues"
+                    labelPlacement="start"
+                    sx={{
+                        justifyContent: "space-between",
+                        marginLeft: 0,
+                        "& .MuiCheckbox-root": {
+                            color: darkTheme
+                                ? "var(--color-dark)"
+                                : "var(--color-light)",
+                        },
+                        "& .MuiCheckbox-root.Mui-checked": {
+                            color: "var(--color-theme)",
+                        },
+                    }}
+                />
+            </FormControl> */}
+            {/* Check Open Issues */}
+
+            {/* Search Keywords */}
+            <FormControl
+                fullWidth
+                sx={{ marginBottom: "20px", position: "relative" }}
+            >
+                <TextField
+                    sx={{
+                        "& .MuiInputBase-input": {
+                            color: darkTheme
+                                ? "var(--color-dark)"
+                                : "var(--color-light)",
+                        },
+                        "& .MuiInputLabel-root": {
+                            color: darkTheme
+                                ? "var(--color-dark)"
+                                : "var(--color-light)",
+                            "&.Mui-focused": {
+                                color: "var(--color-theme)",
+                            },
+                        },
+                        "& .MuiOutlinedInput-root": {
+                            "& .MuiOutlinedInput-notchedOutline": {
+                                borderColor: darkTheme
+                                    ? "var(--color-dark)"
+                                    : "var(--color-light)",
+                            },
+                            "&:hover .MuiOutlinedInput-notchedOutline": {
+                                borderColor: darkTheme
+                                    ? "var(--color-dark)"
+                                    : "var(--color-light)",
+                            },
+                            "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                                borderColor: "var(--color-theme)",
+                            },
+                        },
+                    }}
+                    id="outlined-basic"
+                    label="Outlined"
+                    variant="outlined"
+                />
+            </FormControl>
+            {/* Search Keywords */}
         </Box>
     );
 }

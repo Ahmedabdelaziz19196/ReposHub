@@ -54,7 +54,7 @@ export default function FilterForm({ opne, closeForm }) {
                     }}
                 >
                     <FilterInput />
-                    <DialogActions>
+                    <DialogActions sx={{ marginBottom: "20px" }}>
                         <Button
                             onClick={handleClose}
                             sx={{
@@ -70,7 +70,11 @@ export default function FilterForm({ opne, closeForm }) {
                                 color: darkTheme
                                     ? "var(--color-dark)"
                                     : "var(--color-light)",
+                                "&:hover": {
+                                    background: "var(--color-theme)",
+                                },
                             }}
+                            className="search-button"
                         >
                             Search
                         </Button>

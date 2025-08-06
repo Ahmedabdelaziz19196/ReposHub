@@ -8,19 +8,19 @@ import FilterAltIcon from "@mui/icons-material/FilterAlt";
 import "./NavBar.css";
 import FilterForm from "./FilterForm";
 import Date from "./Date";
-export default function NavBar() {
+export default function NavBar({ contentPerPage, setContentNumberPerPage }) {
     const { darkTheme } = useContext(DarkAndLightTheme);
     const [topic] = useState(["Explore", "Trending", "Recently", "Newest"]);
     const [activeTopic, setActiveTopic] = useState(0);
-    const [contentFormat, setContentFormat] = useState("10x");
-    const [showContentFormat, setShowContentFormat] = useState(false);
+    // const [contentPerPage, setContentPerPage] = useState("10");
+    const [showcontentPerPage, setShowcontentPerPage] = useState(false);
     const [formOpen, setFormOpen] = useState(false);
 
     function handleChangingFormat(e) {
-        setContentFormat(e.target.value);
+        setContentNumberPerPage(e.target.value);
     }
-    function handleShowContentFormat() {
-        setShowContentFormat(!showContentFormat);
+    function handleShowcontentPerPage() {
+        setShowcontentPerPage(!showcontentPerPage);
     }
 
     //handle filter form
@@ -30,6 +30,8 @@ export default function NavBar() {
     function handleCloseForm() {
         setFormOpen(false);
     }
+    //handle filter form
+
     return (
         <>
             <div
@@ -63,7 +65,7 @@ export default function NavBar() {
                     ))}
                 </ul>
                 <div
-                    className={`format ${showContentFormat ? "show" : ""}`}
+                    className={`format ${showcontentPerPage ? "show" : ""}`}
                     style={{
                         position: "relative",
                         display: "flex",
@@ -74,15 +76,15 @@ export default function NavBar() {
                     }}
                 >
                     <div
-                        onClick={handleShowContentFormat}
+                        onClick={handleShowcontentPerPage}
                         className={`format-icon ${
-                            showContentFormat ? "clicked" : ""
+                            showcontentPerPage ? "clicked" : ""
                         }`}
                     >
                         <ViewModuleIcon sx={{ fontSize: 30 }} />
                     </div>
                     <ToggleButtonGroup
-                        value={contentFormat}
+                        value={contentPerPage}
                         exclusive
                         onChange={handleChangingFormat}
                         aria-label="Platform"
@@ -115,9 +117,9 @@ export default function NavBar() {
                             },
                         }}
                     >
-                        <ToggleButton value="10x">10X</ToggleButton>
-                        <ToggleButton value="20x">20X</ToggleButton>
-                        <ToggleButton value="30x">30X</ToggleButton>
+                        <ToggleButton value="10">10X</ToggleButton>
+                        <ToggleButton value="20">20X</ToggleButton>
+                        <ToggleButton value="30">30X</ToggleButton>
                     </ToggleButtonGroup>
                     <div>
                         <Date />
