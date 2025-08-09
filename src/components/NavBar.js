@@ -12,16 +12,28 @@ export default function NavBar({ contentPerPage, setContentNumberPerPage }) {
     const { darkTheme } = useContext(DarkAndLightTheme);
     const [topic] = useState(["Explore", "Trending", "Recently", "Newest"]);
     const [activeTopic, setActiveTopic] = useState(0);
-    // const [contentPerPage, setContentPerPage] = useState("10");
     const [showcontentPerPage, setShowcontentPerPage] = useState(false);
     const [formOpen, setFormOpen] = useState(false);
 
     function handleChangingFormat(e) {
         setContentNumberPerPage(e.target.value);
     }
-    function handleShowcontentPerPage() {
-        setShowcontentPerPage(!showcontentPerPage);
+
+    //close page formater
+    window.addEventListener("click", (e) => {
+        if (showcontentPerPage && !e.target.closest(".format-icon")) {
+            setShowcontentPerPage(false);
+        }
+    });
+    //close page formater
+    //Open page Formater
+    function openFormater() {
+        setShowcontentPerPage(true);
+        setTimeout(() => {
+            setShowcontentPerPage(false);
+        }, 5000);
     }
+    //Open page Formater
 
     //handle filter form
     function handleOpenForm() {
@@ -72,11 +84,10 @@ export default function NavBar({ contentPerPage, setContentNumberPerPage }) {
                         justifyContent: "end",
                         alignItems: "center",
                         gap: "10px ",
-                        // width: "100%",
                     }}
                 >
                     <div
-                        onClick={handleShowcontentPerPage}
+                        onClick={openFormater}
                         className={`format-icon ${
                             showcontentPerPage ? "clicked" : ""
                         }`}

@@ -38,10 +38,19 @@ export default function Card({ responsedDate, index }) {
                             }}
                         >
                             <div className="image-name">
-                                <img
-                                    src={responsedDate[index].owner.avatar_url}
-                                    alt="Profile"
-                                />
+                                <a
+                                    href={responsedDate[index].owner.html_url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <img
+                                        src={
+                                            responsedDate[index].owner
+                                                .avatar_url
+                                        }
+                                        alt="Profile"
+                                    />
+                                </a>
                                 <div className="name">
                                     <h4>{responsedDate[index].owner.login}</h4>
                                     <p

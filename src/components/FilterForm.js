@@ -1,7 +1,7 @@
 import * as React from "react";
-import Button from "@mui/material/Button";
+// import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
+// import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import DarkAndLightTheme from "../Context/DarkAndLight";
@@ -10,6 +10,13 @@ import FilterInput from "./FilterInput";
 
 export default function FilterForm({ opne, closeForm }) {
     const { darkTheme } = useContext(DarkAndLightTheme);
+    // const [filteredData, setFilteredData] = useState({
+    //     language: "javascript",
+    //     stars: "",
+    //     creationDate: "",
+    //     lastUpdate: "",
+    //     keyWords: "",
+    // });
 
     const handleClose = () => {
         closeForm();
@@ -23,7 +30,7 @@ export default function FilterForm({ opne, closeForm }) {
                 sx={{
                     "& .MuiPaper-root": {
                         background: "transparent",
-                        minWidth: "360px",
+                        width: "400px",
                         borderRadius: "10px",
                     },
                 }}
@@ -53,32 +60,7 @@ export default function FilterForm({ opne, closeForm }) {
                             : "var(--color-light)",
                     }}
                 >
-                    <FilterInput />
-                    <DialogActions sx={{ marginBottom: "20px" }}>
-                        <Button
-                            onClick={handleClose}
-                            sx={{
-                                color: darkTheme
-                                    ? "var(--color-dark)"
-                                    : "var(--color-light)",
-                            }}
-                        >
-                            Cancel
-                        </Button>
-                        <Button
-                            sx={{
-                                color: darkTheme
-                                    ? "var(--color-dark)"
-                                    : "var(--color-light)",
-                                "&:hover": {
-                                    background: "var(--color-theme)",
-                                },
-                            }}
-                            className="search-button"
-                        >
-                            Search
-                        </Button>
-                    </DialogActions>
+                    <FilterInput opne={opne} closeForm={closeForm} />
                 </DialogContent>
             </Dialog>
         </>

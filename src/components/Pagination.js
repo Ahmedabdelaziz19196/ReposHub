@@ -37,8 +37,8 @@ export default function ThePagination({
             <Pagination
                 onChange={(e) => getPageNumber(e)}
                 count={
-                    total > 100
-                        ? Math.ceil(100 / contentPerPage)
+                    total > 200
+                        ? Math.ceil(200 / contentPerPage)
                         : Math.ceil(total / contentPerPage)
                 }
                 variant="outlined"
